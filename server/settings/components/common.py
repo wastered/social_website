@@ -23,6 +23,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 # Application definition
 INSTALLED_APPS = [
     # Your apps go here:
+    'server.apps.account',
 
     # Default django apps:
     'django.contrib.auth',
