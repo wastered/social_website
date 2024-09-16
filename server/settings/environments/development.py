@@ -26,3 +26,4 @@ INSTALLED_APPS += (
     # https://github.com/3YOURMIND/django-migration-linter
     'django_migration_linter',
 )
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
