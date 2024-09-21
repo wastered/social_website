@@ -6,3 +6,5 @@ django-stubs[compatible-mypy]
 structlog
 
 django-migration-linter
+
+Pillow==9.2.0
