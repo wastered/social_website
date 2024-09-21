@@ -47,5 +47,6 @@ urlpatterns = [
              template_name='account/registration/password_reset_complete.html'),
          name='password_reset_complete'),
 
-    path('', views.dashboard, name='dashboard')
+    path('', views.dashboard, name='dashboard'),
+    path('register/', views.register, name='register')
 ]
