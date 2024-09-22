@@ -8,3 +8,10 @@ structlog
 django-migration-linter
 
 Pillow==9.2.0
+
+social-auth-app-django
+django-extensions
+werkzeug==2.2.2
+pyOpenSSL==22.0.0
+pyopenssl
+cryptography

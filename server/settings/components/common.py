@@ -24,6 +24,9 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 INSTALLED_APPS = [
     # Your apps go here:
     'server.apps.account',
+    'django_extensions',
+    'social_django',
+
 
     # Default django apps:
     'django.contrib.auth',
@@ -94,6 +97,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'server.apps.account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
 ]
 
 # Internationalization
@@ -137,3 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = reverse_lazy("account:dashboard")
 LOGIN_URL = reverse_lazy("account:login")
 LOGOUT_URL = reverse_lazy("account:logout")
+
+SOCIAL_AUTH_FACEBOOK_KEY = config('FACEBOOK_KEY')  # ИД приложения Facebook
+SOCIAL_AUTH_FACEBOOK_SECRET = config('FACEBOOK_SECRET')  # Секрет приложения Facebook
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']

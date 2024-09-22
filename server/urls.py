@@ -22,6 +22,7 @@ from server import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('server.apps.account.urls')),
+    path('social-auth/', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:  # pragma: no cover
