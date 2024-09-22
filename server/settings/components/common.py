@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'social_django',
 
-
     # Default django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -98,6 +97,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'server.apps.account.authentication.EmailAuthBackend',
     'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
 ]
 
 # Internationalization
@@ -145,3 +146,6 @@ LOGOUT_URL = reverse_lazy("account:logout")
 SOCIAL_AUTH_FACEBOOK_KEY = config('FACEBOOK_KEY')  # ИД приложения Facebook
 SOCIAL_AUTH_FACEBOOK_SECRET = config('FACEBOOK_SECRET')  # Секрет приложения Facebook
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_TWITTER_KEY = config('TWITTER_KEY')  # Ключ API Twitter
+SOCIAL_AUTH_TWITTER_SECRET = config('TWITTER_SECRET')  # Секрет API Twitter
