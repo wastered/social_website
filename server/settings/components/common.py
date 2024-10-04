@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'server.apps.account',
     'django_extensions',
     'social_django',
+    'server.apps.images',
 
     # Default django apps:
     'django.contrib.auth',
