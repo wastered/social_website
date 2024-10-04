@@ -99,6 +99,7 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.vk.VKOAuth2',
 ]
 
 # Internationalization
@@ -152,3 +153,6 @@ SOCIAL_AUTH_TWITTER_SECRET = config('TWITTER_SECRET')  # Секрет API Twitte
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('GOOGLE_OAUTH2_KEY')  # ИД клиента Google
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('GOOGLE_OAUTH2_SECRET')  # Секрет клиента Google
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = config('VK_APP_KEY')
+SOCIAL_AUTH_VK_OAUTH2_SECRET = config('VK_APP_SECRET')
