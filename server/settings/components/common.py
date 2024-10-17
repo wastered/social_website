@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'social_django',
     'server.apps.images',
+    'easy_thumbnails',
 
     # Default django apps:
     'django.contrib.auth',

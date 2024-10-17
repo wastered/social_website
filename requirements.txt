@@ -7,7 +7,7 @@ structlog
 
 django-migration-linter
 
-Pillow==9.2.0
+Pillow==10.2.0
 
 social-auth-app-django
 django-extensions
@@ -17,3 +17,5 @@ pyopenssl
 cryptography
 
 requests==2.31.0
+
+easy-thumbnails==2.10
