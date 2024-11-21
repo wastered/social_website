@@ -176,3 +176,8 @@ SOCIAL_AUTH_PIPELINE = [
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('account:user_detail', args=[u.username])
 }
+
+
+REDIS_HOST = config('REDIS_HOST')
+REDIS_PORT = config('REDIS_PORT')
+REDIS_DB = config('REDIS_DB')

@@ -1,3 +1,4 @@
+import redis
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -5,9 +6,12 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 
+from settings.components.common import REDIS_HOST, REDIS_PORT, REDIS_DB
 from .forms import ImageCreateForm
 from .models import Image
 from ..actions.utils import create_action
+
+r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
 
 
 @login_required
@@ -42,10 +46,15 @@ def image_create(request):
 
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
+    # увеличить общее число просмотров изображения на 1
+    total_views = r.incrby(f"image:{image.id}:views")
+    # увеличить рейтинг изобажения на 1
+    r.zincrby(f"image_ranking", 1, image.id)
     return render(request, 'images/image/detail.html',
                   context={
                       'section': 'images',
                       'image': image,
+                      'total_views': total_views,
                   })
 
 
@@ -104,3 +113,19 @@ def image_list(request):
                       'section': 'images',
                       'images': images,
                   })
+
+@login_required
+def image_ranking(request):
+    # получить словарь рейтинга изображений
+    image_ranking_lst = r.zrange('image_ranking', 0, -1, desc=True)[:10]
+    image_ranking_ids = [int(id) for id in image_ranking_lst]
+
+    # получить наиболее просматриваемые изображения
+    most_viewed = list(Image.objects.filter(id__in=image_ranking_ids))
+    most_viewed.sort(key=lambda x: image_ranking_ids.index(x.id))
+    return render(request, 'images/image/ranking.html',
+                  context={
+                      'section': 'images',
+                      'most_viewed': most_viewed,
+                  })
+

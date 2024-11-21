@@ -19,3 +19,5 @@ cryptography
 requests==2.31.0
 
 easy-thumbnails==2.10
+
+redis==4.3.4
